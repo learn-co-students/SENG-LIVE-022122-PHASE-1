@@ -1,7 +1,7 @@
 // ------------ Debugging and Testing tools: ------------
 
 // Using console.log()
-// `node` in terminal to enter a repl
+// Run `node` in terminal to enter a REPL
 // Debugger
 
 // ------------ 7 data types in JS: ------------
