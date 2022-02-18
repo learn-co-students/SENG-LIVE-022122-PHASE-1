@@ -9,7 +9,7 @@
 
 ### Warm Up Question
 
-&emsp; 💡 Why do we use data types in JavaScript, and what do they help us to accomplish as developers?
+- Why do we use data types in JavaScript, and what do they help us to accomplish as developers?
 
 ### Resources 
 
