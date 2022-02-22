@@ -11,6 +11,8 @@
 
 - Create a variable called 'faveNum' and set it equal to your favorite number
 
+const faveNum = 5
+
 ### Resources
 
 - [MDN: JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
