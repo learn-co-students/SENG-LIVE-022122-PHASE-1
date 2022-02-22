@@ -4,6 +4,14 @@
 // Run `node` in terminal to enter a REPL
 // Debugger
 
+// ------------ Variables: ------------
+
+// What is a variable?
+
+// How can a variable be declared
+
+// What is the difference between let and const
+
 // ------------ 7 data types in JS: ------------
 
 // Number
@@ -17,35 +25,22 @@
 // Boolean
 
 // examples of falsey values
-// 0
-// null
-// undefined
-// ""
-// false
-// NaN
+//  - 0
+//  - null
+//  - undefined
+//  - ""
+//  - false
+//  - NaN
 
 // everything else is truthy
 
-// logical operators
-// == vs ===
-
-// BigInt: a numeric primitive in JavaScript that can represent integers with arbitrary precision
+// BigInt
 
 // Symbol
 
-// Object
-
-// What does it mean to be a primitive type?
-
 // What is the difference between null and undefined?
 
-// What is a variable
-
 // What is the relationship between data types and variables
-
-// How can a variable be declared
-
-// What is the difference between let and const
 
 // ------------ Conditional statements ------------
 
@@ -66,7 +61,7 @@
 // let likes = 1;
 
 // if (likes === 0) {
-//   console.log("render: 0 likes");
+//   console.log("render: Show some love!");
 // } else if (likes === 1) {
 //   console.log('render: 1 like');
 // } else {
@@ -77,7 +72,7 @@
 
 // condition ? truthy response : falsey response
 
-// let favorite = true 
+// let favorite = true
 
 // let response = favorite ? "❤️" : "♡"
 
