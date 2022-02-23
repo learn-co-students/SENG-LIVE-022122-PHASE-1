@@ -193,9 +193,7 @@
 //     }
 // }
 
-const anotherFunc = () => {
-    greeting(sayName, "Rahul")
-}
+
 
 anotherFunc()
 
