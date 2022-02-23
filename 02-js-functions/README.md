@@ -1,5 +1,9 @@
 # JavaScript Functions
 
+<p align="center">
+    <img src="../assets/functions.jpeg" width="250" height="250">
+</p>
+
 ### Warm Up Question
 
 What are JavaScript functions and why do we use them?
