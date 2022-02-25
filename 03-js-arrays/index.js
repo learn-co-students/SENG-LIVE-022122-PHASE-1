@@ -130,14 +130,15 @@ const pokemon = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cha
     // we are only dealing with 1 element at a time 
 // }
 
-for (const x of students){
-    anotherFunc(x)
-}
+// for (const x of students){
+//     anotherFunc(x)
+// }
 
 
-function anotherFunc(el){
-    console.log(el)
-}
+// function anotherFunc(el){
+//     console.log(el)
+// }
+
 // Rewrite the previous exercise using a for..of loop
 
 // for (const poke of pokemon){
@@ -146,16 +147,67 @@ function anotherFunc(el){
 
 // iterators 
 
+// iterate: unpack the array, and handle each element individually 
+
 // .forEach
+
+// for each element in the array, run the callback function
+
+let dogs = ["timmy", "zoie", "king"]
+
+// dogs.forEach(function(dog){
+//     // deal with each dog element individually
+// })
+
+// arrow syntax version 
+// it has no return value 
+// when should we use forEach: print values, or pass the element somewhere, when we dont need to change the elements 
+// dogs.forEach((dog) => console.log(dog))
 
 // Use .forEach() to iteratate through the pokemon array and return each character name in large caps
 
+pokemon.forEach(element => element.toUpperCase());
+
 // Searching an array: .find() vs .filter()
+
+// find is only going to return 1 match, going to be the first match that returns true 
+
+// arr.find(function(){
+//     // write a conditional for what we want to search our array based on 
+// })
+
+// let result = pokemon.find(function(char){
+//     return char.startsWith("S")
+// })
+// let result = pokemon.find(char => char.startsWith("S"))
+
+// console.log(result)
+
+// filter going to return a new array of all the matches 
+
+// const condition = (char, x) => {
+//     console.log(char)
+//     return char.startsWith('S')
+// }
+
+// let results = pokemon.filter((char) => condition(char, 5))
+
+// console.log(results)
 
 // Create a method that will return all pokemon characters that start with the letter 's'. Which array method should be used for this task?
 
 // Modifying an elements in an array
 
 // .map()
+// will return a new array of new elements based on whats happening inside of the callback function 
+// non destructive 
+
+// arr.map(function(element){
+//     // do something to the element 
+// })
 
 // Using map, return a new array with all pokemon character names lowercased.
+
+const lPoke = pokemon.map(poke => poke.toLowerCase())
+
+console.log(lPoke)
