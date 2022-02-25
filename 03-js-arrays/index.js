@@ -208,6 +208,6 @@ pokemon.forEach(element => element.toUpperCase());
 
 // Using map, return a new array with all pokemon character names lowercased.
 
-const lPoke = pokemon.map(poke => poke.toLowerCase())
+// const lPoke = pokemon.map(poke => poke.toLowerCase())
 
-console.log(lPoke)
+// console.log(lPoke)
