@@ -56,7 +56,7 @@ Add the following capabilities to renderPokemon:
 💡 In renderPokemon(), add an event listener to likeBttn, making sure to specify the event as well as the callback function (addLike).
 
 <p align="center">
-    <img src="../assets/addLike.gif" width="150" height="250">
+    <img src="../assets/addLike.gif" width="200" height="350">
 </p>
 
 ### 2. Create a function (deletePokemon) that:
