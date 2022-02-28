@@ -68,7 +68,7 @@ Add the following capabilities to renderPokemon:
 💡 In renderPokemon(), add an event listener to deleteBttn, making sure to specify the event as well as the callback function (deletePokemon).
 
 <p align="center">
-    <img src="../assets/delete.gif" width="800" height="400">
+    <img src="../assets/delete.gif" width="800" height="500">
 </p>
 
 💡 Alternative approach, targeting the DOM element to remove via click event
