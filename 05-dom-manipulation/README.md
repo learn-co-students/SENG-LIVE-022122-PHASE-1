@@ -3,7 +3,7 @@
 ### What we will build today:
 
 <p align="center">
-    <img src="../assets/endgoal.png" width="600" height="250">
+    <img src="../assets/endgoal.png" width="750" height="350">
 </p>
 
 ### Objectives:
