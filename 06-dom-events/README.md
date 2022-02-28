@@ -15,7 +15,7 @@
 Use this image as an example of how each character should should look after completing the following exercise:
 
 <p align="center">
-    <img src="../assets/warmup.png" width="350" height="450">
+    <img src="../assets/warmup.png" width="150" height="350">
 </p>
 
 Add the following capabilities to renderPokemon:
