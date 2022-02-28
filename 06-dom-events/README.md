@@ -94,7 +94,7 @@ Add the following capabilities to renderPokemon:
 💡 Take a look at "styles.css" to see how the DOM Elements we're building out correspond to CSS class and ID selectors.
 
 <p align="center">
-    <img src="../assets/submit.gif" width="800" height="400">
+    <img src="../assets/submit.gif" width="800" height="500">
 </p>
 
 ### Resources
