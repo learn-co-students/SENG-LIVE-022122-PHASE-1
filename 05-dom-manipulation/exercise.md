@@ -4,6 +4,15 @@
 
 2. The goal of this challenge is to return ALL the `'p'` tags on the provided MDN document. Consider which of the selectors discussed would be best applied here by first inspecting the page and reviewing the DOM. Once completed, the return should be a list of nodes. What array method can be used to log each element to the console? Go ahead and test this out in your console.
 
+let pList = document.querySelectorAll('p');
+pList.forEach(p => console.log(p));
+
+document.getElementsByTagName("p");
+
+const allParagraphs = document.querySelectorAll('p');
+
+console.log(allParagraphs);
+
 3. Now that we have seen how to create an element and append it to the DOM, add the following capabilities to renderPokemon:
    ✔️ Creates an "h3" element for each Pokemon and stores the element in a variable (pokeName)
    ✔️ Use textContent() to fill in the heading with the character name.
