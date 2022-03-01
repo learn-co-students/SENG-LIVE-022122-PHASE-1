@@ -18,21 +18,21 @@ Use this image as an example of how each character should should look after comp
     <img src="../assets/warmup.png" width="200" height="350">
 </p>
 
-Add the following capabilities to renderPokemon:
+Add the following capabilities to `renderPokemon()`:
 
-✔️ Creates an "h3" element for each Pokemon and stores the element in a variable (pokeLikes)
+✔️ Creates an "h3" element for each Pokemon and stores the element in a variable 'pokeLikes'
 
-    - Use textContent() to fill in the heading with "Likes: "
+    - Use textContent() to fill in the heading with the text "Likes: "
 
-✔️ Creates an "h5" element for each Pokemon and stores the element in a variable (likesNum)
+✔️ Creates an "h5" element for each Pokemon and stores the element in a variable 'likesNum'
 
     - Assign likesNum a className of "likes-num"
-    - Use textContent() to fill in the heading with the Pokemon's number of likes
+    - Use textContent() to fill in the heading with the Pokemon character's number of likes
 
 ✔️ Creates a "button" element for each Pokemon and stores the element in a variable (likesBttn)
 
     - Assign likesBttn a className of "likes-bttn"
-    - Use textContent() to fill in the button with a label, "♥"
+    - Use textContent() to fill in the button with: "♥"
 
 ✔️ Creates a "button" element for each Pokemon and stores the element in a variable (deleteBttn)
 
@@ -47,11 +47,11 @@ Add the following capabilities to renderPokemon:
 
 ### 1. Create a function (addLike) that:
 
-✔️ Accepts a single Pokemon object (pokemon) and likesNum as parameters
+✔️ Accepts a single character object 'character' and 'likesNum' as parameters
 
-✔️ Increments the Pokemon's number of likes by +1
+✔️ Increments the character's number of likes by 1
 
-✔️ Updates the textContent of likesNum to reflect the Pokemon's updated number of likes
+✔️ Updates the textContent of the likesNum element to reflect the Pokemon's updated number of likes
 
 💡 In renderPokemon(), add an event listener to likeBttn, making sure to specify the event as well as the callback function (addLike).
 
@@ -99,6 +99,6 @@ Add the following capabilities to renderPokemon:
 
 ### Resources
 
-&emsp; [JS Event Delegation vs. Bubble & Capturing](https://medium.com/@marjuhirsh/event-propagation-event-delegation-7d3db1baf02a)
+- [JS Event Delegation vs. Bubble & Capturing](https://medium.com/@marjuhirsh/event-propagation-event-delegation-7d3db1baf02a)
 
-&emsp; [Static and Dynamic Websites: What's the Difference?](https://www.mlytics.com/blog/static-and-dynamic-websites-whats-the-difference/)
+- [Static and Dynamic Websites: What's the Difference?](https://www.mlytics.com/blog/static-and-dynamic-websites-whats-the-difference/)
