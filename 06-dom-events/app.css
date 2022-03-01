@@ -75,7 +75,7 @@ label {
   justify-content: center;
 }
 
-.like-bttn {
+.likes-bttn {
   color: red;
   font-size: larger;
   margin-right: 10px;
@@ -83,7 +83,7 @@ label {
   margin-bottom: 5px;
 }
 
-.like-bttn:hover {
+.likes-bttn:hover {
   color: white;
   background-color: red;
 }
