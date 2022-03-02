@@ -1,35 +1,41 @@
-const pokemon = [
-  {
-    id: 1,
-    name: "bulbasaur",
-    img: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
-    likes: 4,
-  },
-  {
-    id: 2,
-    name: "ivysaur",
-    img: "https://images.cults3d.com/6VgkTLM1j-CTAMhEJTtsRV1z6N8=/516x516/https://files.cults3d.com/uploaders/14845535/illustration-file/5d09c257-51ed-4d65-aa36-3f9201af34c4/ivysaur.png",
-    likes: 21,
-  },
-  {
-    id: 3,
-    name: "venusaur",
-    img: "https://images.saymedia-content.com/.image/t_share/MTc2MjYwODQ5NTk2NTcyODYy/pokemon-venusaur-nicknames.png",
-    likes: 7,
-  },
-  {
-    id: 4,
-    name: "charmander",
-    img: "https://pixy.org/download/1207107/",
-    likes: 20,
-  },
-  {
-    id: 5,
-    name: "charmeleon",
-    img: "https://static.pokemonpets.com/images/monsters-images-800-800/5-Charmeleon.webp",
-    likes: 11,
-  },
-];
+// Asynchronous: out of order, not from top to bottom, will run other code until the function completes its task
+
+// GET request
+// API: application programming interface, third party api's 
+// our own server, in this project we are using db.json
+
+// endpoint: the destination we are making the request to, so where we are getting our data from 
+
+// our endpoint(s) for today is: 
+// '/characters': all of the characters in our server 
+
+// Follows the standard for creating routes called REST:
+// '/characters/:id': give us the character that matches the provided :id i.e characters/3
+
+// HTTP Verbs: GET, POST, PATCH, DELETE
+
+// CRUD: Create, Read, Update and Delete
+
+// base url: http://localhost:3000/
+
+// http://localhost:3000/characters
+
+// Make a request to our /characters endpoint 
+// Grab that data and handle it properly 
+// Pass that data to renderPokemon()
+
+// Making a request using fetch()
+// NOTE!!! fetch by default makes a GET request 
+
+// .fetch() anatomy 
+// url is required when using fetch
+// fetch(url) // return of this method is going to be a promise: inside of that promise is going to be a response object
+// .then(function(response){
+//   return response.json() // turn our JSON into a plain old JS object
+// }) // return for this is ANOTHER promise 
+// .then(function(data){
+//   console.log(data) // inspecting did i get the correct set of data???
+// })
 
 const pokeContainer = document.querySelector("#poke-container");
 const pokeForm = document.querySelector("#poke-form");
@@ -50,16 +56,35 @@ pokeForm.addEventListener("submit", function (e) {
   pokeForm.reset();
 });
 
-pokemon.forEach(function (character) {
-  renderPokemon(character);
-});
+function getPokemon(){
+  fetch('http://localhost:3000/characters') // => promise
+  .then(function(resp){
+    return resp.json() // turning response into an object/ return another promise
+  })
+  .then(function(characters){
+    characters.forEach(function(character){
+      renderPokemon(character)
+    })
+  })
+}
+
+getPokemon()
+
+// pokemon.forEach(function (character) {
+//   renderPokemon(character);
+// });
 
 function renderPokemon(char) {
   const pokeCard = document.createElement("div");
   pokeCard.id = `poke-${char.id}`;
   pokeCard.className = "poke-card";
 
-  pokeCard.addEventListener("click", () => showCharacter(char));
+  // pokeCard.addEventListener("click", (e) => showCharacter(e, char));
+
+  pokeCard.addEventListener("click", function(){
+    return showCharacter(char)
+  })
+    
 
   const pokeImg = document.createElement("img");
   pokeImg.src = char.img;
@@ -78,7 +103,8 @@ function renderPokemon(char) {
   const likesBttn = document.createElement("button");
   likesBttn.className = "like-bttn";
   likesBttn.textContent = "♥";
-  likesBttn.addEventListener("click", function () {
+  likesBttn.addEventListener("click", function (e) {
+    e.stopPropagation()
     ++char.likes;
     likeNum.textContent = char.likes;
   });
@@ -86,13 +112,32 @@ function renderPokemon(char) {
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "delete";
-  deleteBttn.addEventListener("click", function () {
+  deleteBttn.addEventListener("click", function (e) {
+    e.stopPropagation()
     pokeCard.remove();
   });
 
   pokeCard.append(pokeImg, pokeName, pokeLikes, likeNum, likesBttn, deleteBttn);
   pokeContainer.appendChild(pokeCard);
+
+  return pokeCard
 }
 
+// fire off when a character card is clicked
+// want to render an individual character, the character that was clicked
+// make a request upon a click to our endpoint: characters/:id
+// use that response + renderPokemon() to change the contents on our web page
+function showCharacter(character){
 
+  // how do i get the character's id and use that in my endpoint 
+  fetch(`http://localhost:3000/characters/${character.id}`)
+  .then(function(response){
+    return response.json()
+  }) 
+  .then(function(character){
+    const pokeCard = renderPokemon(character) // return the div element
+    pokeCard.id = "poke-show-card" // updatng the id for styling purpose 
+    pokeContainer.replaceChildren(pokeCard)
+  })
 
+}
