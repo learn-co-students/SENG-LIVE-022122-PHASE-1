@@ -29,6 +29,30 @@
       "name": "charmeleon",
       "img": "https://static.pokemonpets.com/images/monsters-images-800-800/5-Charmeleon.webp",
       "likes": 11
+    },
+    {
+      "name": "Pikachu",
+      "img": "https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+      "likes": 0,
+      "id": 6
+    },
+    {
+      "name": "Squirtle",
+      "img": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+      "likes": 0,
+      "id": 7
+    },
+    {
+      "name": "Squirtle",
+      "img": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+      "likes": 0,
+      "id": 8
+    },
+    {
+      "name": "Pikachu",
+      "img": "https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+      "likes": 0,
+      "id": 9
     }
   ],
   "comments": [
@@ -38,13 +62,12 @@
       "content": "I love Bulbasaur!"
     },
     {
-      "id": 1,
+      "id": 2,
       "characterId": 1,
       "content": "Bulbasaur is coool!"
     },
     {
-      "id": 2,
-      "user": "Alice",
+      "id": 3,
       "characterId": 2,
       "content": "I love Ivysaur more!"
     }

@@ -1,3 +1,30 @@
+// making POST
+
+// http verb: POST
+
+// fetch does not make a post request by default, so we need to tell it to make a POST request
+
+// we also need to tell it what its posting
+
+// config object: 
+
+// method is an HTTP verb associated with the type of request we want to make 
+
+// headers: 
+// value is an object 
+// this object has 2 properties we want defined: 'Content-Type' & 'Accept'
+// these two properties tells our request what type of data being sent and accepted
+
+// body 
+// this is the data we are sending 
+// its going to be an object 
+// we need to stringify this object because everything shared over the web is shared as a string
+
+// fetch(url, {method: POST, headers: {'Content-Type': 'application/json, 'Accept': 'application/json'}, body: JSON.stringify({data we are sending to the server as an object})})
+
+// object passed into fetch is called config object ((optional arg that we're going to only use when we make a request other than a GET request))
+
+
 const pokeContainer = document.querySelector("#poke-container");
 const pokeForm = document.querySelector("#poke-form");
 const pokeFormContainer = document.querySelector("#poke-form-container");
@@ -10,14 +37,35 @@ pokeForm.addEventListener("submit", function (event) {
   const name = document.querySelector("#name-input").value;
   const img = document.querySelector("#img-input").value;
 
+  /// this is going to be our body
   let newChar = {
-    id: 6, // NEEDS TO CHANGE,
     name: name,
     img: img,
     likes: 0,
   };
 
-  renderPokemon(newChar);
+
+  fetch('http://localhost:3000/characters', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(newChar)
+  })
+
+  // pessimisticly rendering the character
+  // .then(function(response){
+  //   return response.json()
+  // })
+  // .then(function(char){
+  //   renderPokemon(char); // using the response from the POST request to render the new character
+  //   // pessimistic rendering 
+  //   console.log(char)
+  // })
+
+  // optimistic rendering: trusting the resp will be successful and rendering before we even get a response from the server
+  renderPokemon(newChar)
   pokeForm.reset();
 });
 
@@ -71,7 +119,8 @@ function renderPokemon(pokemon) {
   const likesBttn = document.createElement("button");
   likesBttn.className = "like-bttn";
   likesBttn.textContent = "♥";
-  likesBttn.addEventListener("click", function () {
+  likesBttn.addEventListener("click", function (e) {
+    e.stopPropagation()
     ++pokemon.likes;
     likeNum.textContent = pokemon.likes;
   });
@@ -79,7 +128,8 @@ function renderPokemon(pokemon) {
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "delete";
-  deleteBttn.addEventListener("click", function () {
+  deleteBttn.addEventListener("click", function (e) {
+    e.stopPropagation()
     pokeCard.remove();
   });
 
@@ -101,16 +151,16 @@ function showCharacter(character) {
       let pokeCard = renderPokemon(char);
       pokeCard.id = "poke-show-card";
       // pokeCard.dataset.id = character.id;
-      // loadComments(pokeCard, char);
+      loadComments(pokeCard, char);
       pokeContainer.replaceChildren(pokeCard);
       pokeFormContainer.replaceChildren(commentsForm());
     });
 }
 
-function renderComment(comment) {
+function renderComment(commentsDiv, comment) {
   let li = document.createElement("li");
   li.textContent = comment.content;
-
+  commentsDiv.append(li)
   return li;
 }
 
@@ -119,6 +169,11 @@ function commentsForm() {
   form.id = "comment-form";
 
   // attach an event listener to the #comment-form
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault()
+    console.log("comment form submitted!!!")
+  })
 
   let commentInput = document.createElement("input");
   commentInput.type = "text";
@@ -136,4 +191,20 @@ function commentsForm() {
   form.append(commentInput, submit);
 
   return form;
+}
+
+
+function loadComments(pokeCard, char){
+  const commentsDiv = document.createElement('div') 
+  commentsDiv.id = `comment-card-${char.id}`
+
+  const h4 = document.createElement('h4')
+  h4.textContent = `${char.comments.length} comments:`
+
+  commentsDiv.append(h4)
+  pokeCard.append(commentsDiv)
+
+  char.comments.forEach(function(comment){
+    return renderComment(commentsDiv, comment)
+  })
 }
