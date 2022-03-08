@@ -81,15 +81,73 @@ function renderPokemon(pokemon) {
   likesBttn.addEventListener("click", function (e) {
     e.stopPropagation();
     ++pokemon.likes;
+
+
+    // need to make a request to the server
+    // method we are going to use is a PATCH method 
+    // for updates there are methods we can use: PATCH/PUT
+
+    // we need to tell the request what parts of the object we are updating: likes
+
+    // we need to figure out where we are sending the request to 
+
+    // /characters => all characters
+    // /characters/:id => deals with the character associated with the given id value in the route
+
+    // const newLikes = {likes: pokemon.likes}
+    fetch(`http://localhost:3000/characters/${pokemon.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      // body: JSON.stringify(newLikes)
+      body: JSON.stringify({likes: pokemon.likes})
+    })
+
+    // pessimistic 
+    // .then(function(resp){
+    //   return resp.json()
+    // })
+    // .then(function(character){
+    //   likeNum.textContent = character.likes;
+
+    //   // do something with something 
+    // })
+
+
+    // optimistic 
     likeNum.textContent = pokemon.likes;
-  });
+
+  })
 
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "delete";
   deleteBttn.addEventListener("click", function (e) {
     e.stopPropagation();
-    pokeCard.remove();
+    
+    // make a DELETE request to the server 
+    // Do I need to send any data with the request??
+    // id??? how do i know which character is being deleted??
+    
+    
+    fetch(`http://localhost:3000/characters/${pokemon.id}`, {
+      method: 'DELETE'
+    })
+
+    // pessimistic 
+    .then(function(resp){
+      console.log(resp)
+      return resp.json()
+    })
+    .then(function(){
+      pokeCard.remove()
+    })
+    
+
+    // optimistic
+    // pokeCard.remove();
   });
 
   pokeCard.append(pokeImg, pokeName, pokeLikes, likeNum, likesBttn, deleteBttn);
@@ -109,7 +167,7 @@ function showCharacter(character) {
     .then(function (char) {
       let pokeCard = renderPokemon(char);
       pokeCard.id = "poke-show-card";
-      // pokeCard.dataset.id = character.id;
+      pokeCard.dataset.id = character.id;
       loadComments(pokeCard, char);
       pokeContainer.replaceChildren(pokeCard);
       pokeFormContainer.replaceChildren(commentsForm());
@@ -129,7 +187,52 @@ function commentsForm() {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    console.log("comment form submitted!!!");
+    console.log(e.target)
+
+  // grab the values submitted with the form fields: grab the comment 
+
+  // select the element using the id 
+  // call the value method on that element
+
+  const content = document.querySelector('#comment-input').value 
+
+  const characterId = parseInt(document.querySelector('#poke-show-card').dataset.id)
+
+//  console.log(characterId)
+
+  // console.log(content)
+
+  // we want to create a new comment object characterId, content 
+
+  // how can I attach the characters id to our pokecard element so I can then grab it 
+
+  // plain old js object 
+  const newComment = {
+    content: content,
+    characterId: characterId
+  }
+
+  // send a POST request to persist the data to the server 
+
+  fetch(' http://localhost:3000/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(newComment)
+  })
+
+  // update our DOM to reflect the new comment 
+  .then(function(resp){
+    return resp.json()
+  })
+  .then(function(comment){
+    const commentsDiv = document.querySelector(`#comment-card-${characterId}`)
+    renderComment(commentsDiv, comment)
+    form.reset()
+  })
+  
   });
 
   let commentInput = document.createElement("input");
