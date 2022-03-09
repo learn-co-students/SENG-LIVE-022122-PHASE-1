@@ -1,3 +1,0 @@
-{
-  "/characters/:id": "/characters/:id?_embed=comments"
-}
