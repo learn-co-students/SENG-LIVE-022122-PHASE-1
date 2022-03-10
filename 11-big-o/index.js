@@ -69,18 +69,16 @@ const binarySearch = (arr, item) => {
 
 // Quadratic Time Complexity: Big O(N^2)
 
-function multAllElements(arr1, arr2) {
-  if (arr1.length !== arr2.length) return undefined;
-
+function multAllElements(arr1) {
   let sumOfProducts = 0;
 
   for (let el of arr1) {
-    for (let subEl of arr2) {
+    for (let subEl of arr1) {
       sumOfProducts += el * subEl;
     }
   }
   return sumOfProducts;
 }
 
-// multAllElements([1, 2], [9, 10])
-// multAllElements([1, 2, 3, 4], [5, 6, 7, 8])
+// multAllElements([1, 2])
+// multAllElements([1, 2, 3, 4])
